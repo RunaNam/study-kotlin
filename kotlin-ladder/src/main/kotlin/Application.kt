@@ -1,30 +1,23 @@
 import domain.ladder.Ladder
 import domain.player.Players
+import domain.prize.Prizes
 import view.InputView
 import view.OutputView
 
 fun main() {
     val players = generatePlayers()
     val ladder = generateLadder(players)
-
-    for (player in players.value) {
-        println(player.position)
-    }
-    
-    println()
-
-    for (a in ladder.value) {
-        println(a)
-    }
+    val prizes = generatePrizes(players)
 }
 
-fun generateLadder(players: Players): Ladder =
+fun generatePrizes(players: Players): Prizes =
     try {
-        val height = InputView.inputHeight()
-        Ladder(height, players.value.size)
+        val prizeNames = InputView.inputPrizeNames()
+        Prizes(prizeNames, players.getSize())
+
     } catch (e: RuntimeException) {
         OutputView.printException(e)
-        generateLadder(players)
+        generatePrizes(players)
     }
 
 fun generatePlayers(): Players =
@@ -36,4 +29,11 @@ fun generatePlayers(): Players =
         generatePlayers()
     }
 
-
+fun generateLadder(players: Players): Ladder =
+    try {
+        val height = InputView.inputHeight()
+        Ladder(height, players.getSize())
+    } catch (e: RuntimeException) {
+        OutputView.printException(e)
+        generateLadder(players)
+    }

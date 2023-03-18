@@ -13,4 +13,9 @@ object InputView {
         require(input.toIntOrNull() != null) { "사다리의 높이는 숫자여야 합니다." }
         return input.toInt()
     }
+
+    fun inputPrizeNames(): List<String> {
+        println("실행 결과를 입력하세요. (결과는 쉼표(,)로 구분하세요)")
+        return readln().split(",")
+    }
 }
