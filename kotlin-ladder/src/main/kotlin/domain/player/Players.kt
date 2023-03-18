@@ -13,4 +13,8 @@ class Players(val names: List<String>) {
         }
         value = tmpValue
     }
+
+    fun getSize(): Int {
+        return value.size
+    }
 }
