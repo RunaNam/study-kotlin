@@ -2,7 +2,7 @@ package domain.ladder
 
 import kotlin.random.Random
 
-class Ladder(val height: Int, val width: Int) {
+class Ladder(height: Int, width: Int) {
 
     val value: List<Int>
 
@@ -12,7 +12,7 @@ class Ladder(val height: Int, val width: Int) {
 
         val tmpValue: MutableList<Int> = ArrayList()
         for (i in 1..height) {
-            tmpValue.add(Random.nextInt(height))
+            tmpValue.add(Random.nextInt(width - 1))
         }
         value = tmpValue
     }
