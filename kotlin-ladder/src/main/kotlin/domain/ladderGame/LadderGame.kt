@@ -11,11 +11,11 @@ class LadderGame(val players: Players, val ladder: Ladder, val prizes: Prizes) {
     val result = LinkedHashMap<Player, Prize>()
 
     fun run() {
-        movePlayer()
+        movePlayers()
         setResult()
     }
 
-    private fun movePlayer() {
+    private fun movePlayers() {
         for (line in ladder.value) {
             players.move(line)
         }
